@@ -2,17 +2,16 @@
 
 const chalk = require('chalk'),
 	debugCreate = require('debug'),
-	helpers = require(path.join(global.__paths.lib, 'helpers')),
-	rp = require('request-promise'),
-	slack = require(path.join(global.__paths.lib, 'slack')),
+	helpers = require('../lib/helpers'),
+	slack = require('../lib/slack'),
 	util = require('util');
 
-const handleIssue = require(path.join(global.__paths.handlers, 'issue')),
-	handleBranch = require(path.join(global.__paths.handlers, 'branch')),
-	handleCommit = require(path.join(global.__paths.handlers, 'commit')),
-	handleTag = require(path.join(global.__paths.handlers, 'tag')),
-	handleMergeRequest = require(path.join(global.__paths.handlers, 'mergeRequest')),
-	handleWikiPage = require(path.join(global.__paths.handlers, 'wikiPage'));
+const handleIssue = require('./issue'),
+	handleBranch = require('./branch'),
+	handleCommit = require('./commit'),
+	handleTag = require('./tag'),
+	handleMergeRequest = require('./mergeRequest'),
+	handleWikiPage = require('./wikiPage');
 
 const debug = debugCreate('gitlab-slack:handler');
 

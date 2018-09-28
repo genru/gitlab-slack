@@ -1,7 +1,6 @@
 'use strict';
 
-const chalk = require('chalk'),
-	debugCreate = require('debug'),
+const debugCreate = require('debug'),
 	util = require('util');
 
 const debug = debugCreate('gitlab-slack:handler:tag');
@@ -22,6 +21,8 @@ module.exports = function (data, beforeZero, afterZero) {
 		action = 'pushed new tag';
 	} else if (afterZero) {
 		action = 'deleted tag';
+	} else {
+		action = 'moved tag';
 	}
 
 	const tag = data.ref.substr(data.ref.lastIndexOf('/') + 1),

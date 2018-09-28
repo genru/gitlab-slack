@@ -1,7 +1,7 @@
 'use strict';
 
 const debugCreate = require('debug'),
-	helpers = require(path.join(global.__paths.lib, 'helpers')),
+	helpers = require('../lib/helpers'),
 	util = require('util');
 
 const debug = debugCreate('gitlab-slack:handler:wikipage');

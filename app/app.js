@@ -4,21 +4,17 @@ global._ = require('lodash');
 global.Promise = require('bluebird');
 global.path = require('path');
 
-global.__paths = {
-	base: path.join(__dirname, '../')
-};
-global.__paths.app = path.join(global.__paths.base, 'app');
-global.__paths.lib = path.join(global.__paths.app, 'lib');
-global.__paths.handlers = path.join(global.__paths.app, 'handlers');
-
-global.config = require(path.join(global.__paths.base, 'config'));
+/**
+ * @type {Configuration}
+ */
+global.config = require('../config');
 
 const chalk = require('chalk'),
 	debugCreate = require('debug'),
-	{ GitLabApi } = require(path.join(global.__paths.lib, 'gitlabapi')),
-	handlers = require(global.__paths.handlers),
-	helpers = require(path.join(global.__paths.lib, 'helpers')),
-	server = require(path.join(global.__paths.lib, 'server'));
+	{ GitLabApi } = require('./lib/gitlabapi'),
+	handlers = require('./handlers'),
+	helpers = require('./lib/helpers'),
+	server = require('./lib/server');
 
 const api = new GitLabApi(global.config.gitLab.baseUrl, global.config.gitLab.apiToken),
 	debug = debugCreate('gitlab-slack:app');
